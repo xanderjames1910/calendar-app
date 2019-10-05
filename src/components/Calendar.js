@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { BrowserRouter, Route, Link } from 'react-router-dom';
 import 'moment/locale/es-us';
 
 import moment from 'moment';
@@ -7,9 +8,8 @@ import moment from 'moment';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Pagination from 'react-bootstrap/Pagination';
 
-import MaterialIcon, { colorPalette } from 'material-icons-react';
+import MaterialIcon from 'material-icons-react';
 
 class Calendar extends Component {
   weekdayshort = moment.weekdaysShort();
@@ -226,6 +226,7 @@ class Calendar extends Component {
       },
       () => {
         console.log('DIA SELECCIONADO: ', this.state.selectedDay);
+        this.props.history.push('/view-day/');
       },
     );
   };
