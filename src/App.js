@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+
+import Container from 'react-bootstrap/Container';
+import MenuBar from './components/layout/Navbar';
+import Calendar from './components/Calendar';
+import addReminder from './components/addReminder';
+import viewDay from './components/viewDay';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <MenuBar />
+        <Container style={{ marginTop: 90 }}>
+          <Switch>
+            <Route exact path='/' component={Calendar} />
+            <Route exact path='/add-reminder' component={addReminder} />
+            <Route exact path='/view-day' component={viewDay} />
+          </Switch>
+        </Container>
+      </div>
+    </Router>
   );
 }
 
